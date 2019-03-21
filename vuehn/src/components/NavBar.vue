@@ -1,11 +1,11 @@
 <template>
     <div class="navbar">
         <div class="logo">
-            <a href="#">Y</a>
+            <router-link to="/" class="pure-menu-heading pure-menu-link">Y</router-link>
         </div>
         <ul>
             <li>
-                <a href="#">News</a>
+                 <router-link class="pure-menu-link" to="/about">About</router-link>
             </li>
             <li>
                 <a href="#">Pasts</a>
