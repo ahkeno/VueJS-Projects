@@ -1,9 +1,9 @@
 <template>
   <div>
-    <NavBar/>
     <div class="content">
       <div v-for="story in stories" :key="story.id">
-        <h2>{{ story.data.title }}</h2>
+        <router-link :to="{ path: '/item/' + story.data.id }"
+        ><h2>{{ story.data.title }}</h2></router-link>
         <p>Type: {{ story.data.type }}</p>
         <p>Link: {{ story.data.url }}</p>
         <p>Score: {{ story.data.score }}</p>
@@ -14,14 +14,11 @@
 
 <script>
 // @ is an alias to /src
-import NavBar from '@/components/NavBar.vue';
 import axios from "axios";
 
 export default {
   name: 'home',
-  components: {
-    NavBar
-  },
+  components: {},
   data:function(){
     return {
       err: "",
