@@ -22,34 +22,11 @@ export default {
   data:function(){
     return {
       err: "",
-      stories:[]
+      stories:this.$store.state.topStories
     };
   },
   created: function() {
-    axios
-      .get("https://hacker-news.firebaseio.com/v0/topstories.json")
-      .then(result => {
-        console.log("Http Get servie success");
-        this.results = result.data.slice(0, 10);
-        this.results.forEach(element => {
-          //call the top 10 contents by its own ID
-          axios
-            .get(
-              "https://hacker-news.firebaseio.com/v0/item/" + element + ".json"
-            )
-            .then(result => {
-              this.stories.push(result);
-            })
-            .catch(err => {
-              console.log(err);
-            });
-        });
-        
-      })
-      .catch(err => {
-         console.log("Http Get servie Error",err);
-        this.err = err;
-      });
+    if (this.$store.state.topStories.length === 0) this.$store.dispatch('fetch_top_stories');
   }
 }
 </script>
