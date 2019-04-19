@@ -1,4 +1,11 @@
+
 # vuehn
+
+BackEnd API: https://github.com/HackerNews/API
+
+## Library 
+axios: a promise-based HTTP client
+https://www.npmjs.com/package/vue-axios
 
 ## Project setup
 ```

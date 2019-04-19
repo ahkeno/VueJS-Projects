@@ -1,0 +1,36 @@
+<html>
+   <head>
+       <link rel="stylesheet" href="main.css">
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.4/vue.js"></script>
+       <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+   </head>
+   <body>
+        <div id="app">
+            <form id="book-search" @submit.prevent="search">
+                <label>
+                    Search books 
+                    <input type="text" v-model:trim="searchTerm" placeholder="⌕">
+                </label>
+                <button type="submit">Search</button>
+            </form>
+            <ol class="search-results">
+                <li v-for="book in searchResults.items">
+                    <ul>
+                        <li>
+                            <img :src="'http://books.google.com/books/content?id='+book.id+'&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api'" alt="">
+                        </li>
+                        <li>
+                            {{ book.volumeInfo.title }}
+                        </li>
+                        <li>
+                            by {{bookAuthor(book)}}
+                        </li>
+                    </ul>
+                   
+                    
+                </li>
+            </ol>
+        </div>
+   </body>
+   <script src="./main.js"></script>
+</html>
