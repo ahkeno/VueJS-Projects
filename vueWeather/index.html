@@ -1,0 +1,31 @@
+<html>
+   <head>
+        <link rel="stylesheet" href="main.css">
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.4/vue.js"></script>
+       <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+   </head>
+   <body>
+        <div id="weatherApp">
+            <form id="city-search" @submit.prevent="search">
+                <label>
+                    Search by City 
+                    <input 
+                    @keyup.enter="search"
+                    type="text" v-model:trim="searchTerm" 
+                    placeholder="⌕">
+                </label>
+                
+            </form>
+            <div class="search-results" v-if="searchResults !== ''">
+               <h1>{{searchResults.name}}</h1>
+               <h2>{{Math.round(searchResults.main.temp)}} <span>°C</span></h2>
+               <h4>Feel Like {{searchResults.main.feels_like}}</h4>     
+               <h5> humidity {{searchResults.main.humidity}}</h5>   
+            </div>
+            <div v-if="notFound == true">
+                <h1>City Not Found</h1>
+            </div>
+        </div>
+   </body>
+   <script src="./main.js"></script>
+</html>
