@@ -10,7 +10,7 @@ var app = new Vue({
           axios.get(`https://www.googleapis.com/books/v1/volumes?q=` + this.searchTerm)
           .then(response => {
               this.searchResults = response.data;
-              console.log(this.searchResults);
+              console.log(this.searchResults.items);
           } )
           .catch( error => {
               console.error(error);
